@@ -1,11 +1,13 @@
 class ShoppingCart
   attr_reader :name,
               :capacity,
-              :products
+              :products,
+              :details
   def initialize(name, capacity)
     @name = name
     @capacity = capacity.to_i
     @products = []
+    @details = {}
   end
 
   def add_product(product)
@@ -27,4 +29,10 @@ class ShoppingCart
       product.category == category
     end
   end
+
+  def generate_details
+    @details[:name] = @name
+    @details[:capacity] = @capacity
+  end
+
 end
