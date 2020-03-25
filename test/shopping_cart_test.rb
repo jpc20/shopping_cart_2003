@@ -7,6 +7,8 @@ class ShoppingCartTest < Minitest::Test
 
   def setup
     @cart = ShoppingCart.new("King Soopers", "30items")
+    @product1 = Product.new(:paper, 'toilet paper', 3.70, '10')
+    @product2 = Product.new(:meat, 'chicken', 4.50, '2')
   end
 
   def test_it_exists
@@ -23,6 +25,13 @@ class ShoppingCartTest < Minitest::Test
 
   def test_products_empty_by_default
     assert_equal [], @cart.products
+  end
+
+  def test_add_products
+    @cart.add_product(@product1)
+    @cart.add_product(@product2)
+
+    assert_equal [@product1, @product2], @cart.products
   end
 
 end
