@@ -64,4 +64,13 @@ class ShoppingCartTest < Minitest::Test
     assert_equal true, @cart.is_full?
   end
 
+  def test_products_by_category
+    @cart.add_product(@product1)
+    @cart.add_product(@product2)
+    @cart.add_product(@product3)
+    @cart.add_product(@product4)
+
+    assert_equal [@product1, @product3], @cart.products_by_category(:paper)
+  end
+
 end
